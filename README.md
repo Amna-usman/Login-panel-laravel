@@ -1,2 +1,1 @@
-# Login-panel-laravel
-Made User Login panel using Laravel
+![User Admin Panel](https://github.com/Amna-usman/Login-panel-laravel/blob/main/user-login.png?raw=true)
