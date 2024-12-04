@@ -7,6 +7,13 @@ function App() {
   const [registrationID, setRegistrationID] = useState('');
   const [password, setPassword] = useState('');
   const [confirmpassword, setConfirmPassword] = useState('');
+  const [counter, setCounter] = useState(0); // Set counter as a number
+  const [buttonColor, setButtonColor] = useState(''); // New state for button color
+  const colorarray = [
+    'red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown', 'cyan', 'magenta',
+    'lime', 'teal', 'indigo', 'violet', 'gold', 'silver', 'gray', 'peach'
+  ];
+   
 
   const formStyle = {
     maxWidth: '400px',
@@ -37,7 +44,7 @@ function App() {
   const buttonStyle = {
     width: '100%',
     padding: '10px',
-    backgroundColor: '#007bff',
+    backgroundColor: buttonColor, // Set the background color dynamically
     color: '#fff',
     border: 'none',
     borderRadius: '5px',
@@ -53,6 +60,13 @@ function App() {
     borderRadius: '10px',
     textAlign: 'left',
   };
+
+  function userclick() {
+    setCounter(counter + 1);
+    // Randomly select a color from the colorarray and update button color
+    const randomColor = colorarray[Math.floor(Math.random() * colorarray.length)];
+    setButtonColor(randomColor);
+  }
 
   return (
     <div style={{ padding: '20px' }}>
@@ -100,13 +114,25 @@ function App() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
 
-          <button style={buttonStyle} type="button">
+          <button style={buttonStyle} type="button" onClick={userclick}>
             Submit
           </button>
         </form>
       </div>
 
-      {/* Output */}
+      {/* Clickme Button */}
+      <button className="btn-btn-success" onClick={userclick}>
+        Clickme
+      </button>
+
+      {/* Show counter value */}
+      <div style={outputStyle}>
+        <p>
+          <strong>Click Counter:</strong> {counter}
+        </p>
+      </div>
+
+      {/* Output Form Data */}
       <div style={outputStyle}>
         <p>
           <strong>Firstname:</strong> {firstname}
